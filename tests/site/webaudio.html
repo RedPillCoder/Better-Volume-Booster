@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>page-owned webaudio</title></head>
+<body>
+<h1>Page owns the WebAudio graph</h1>
+<video id="m" src="tone.wav" autoplay muted></video>
+<p id="state">waiting</p>
+<script>
+	const v = document.getElementById("m");
+	try {
+		const ctx = new AudioContext();
+		ctx.createMediaElementSource(v);
+		ctx.destination;
+		document.addEventListener("click", () => ctx.resume());
+		document.getElementById("state").textContent = "page-connected";
+	} catch (e) {
+		document.getElementById("state").textContent = "page-failed";
+	}
+</script>
+</body>
+</html>

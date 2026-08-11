@@ -1,0 +1,13 @@
+{
+	"name": "better-volume-booster-tests",
+	"private": true,
+	"description": "Test harness for Better Volume Booster (unit, DOM and real-Firefox e2e).",
+	"scripts": {
+		"unit": "node unit.test.js",
+		"dom": "node dom.test.js",
+		"e2e": "python3 e2e_marionette.py"
+	},
+	"dependencies": {
+		"jsdom": "^24.0.0"
+	}
+}

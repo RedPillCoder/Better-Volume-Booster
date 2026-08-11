@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>source-child media</title></head>
+<body>
+<h1>Media URL carried by a &lt;source&gt; child</h1>
+<audio id="m" autoplay muted><source src="http://127.0.0.1:8001/tone.wav" type="audio/wav"></audio>
+<p id="state">waiting</p>
+<script>
+	const m = document.getElementById("m");
+	m.addEventListener("play", () => document.getElementById("state").textContent = "playing");
+	m.addEventListener("error", () => document.getElementById("state").textContent = "error");
+</script>
+</body>
+</html>

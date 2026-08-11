@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>src swap</title></head>
+<body>
+<h1>Player swaps media host mid-session</h1>
+<audio id="m" src="http://127.0.0.1:8001/tone.wav" autoplay muted></audio>
+<p id="state">waiting</p>
+<script>
+	const m = document.getElementById("m");
+	let swapped = false;
+	m.addEventListener("play", () => {
+		if (!swapped) {
+			swapped = true;
+			document.getElementById("state").textContent = "first-play";
+			setTimeout(() => { m.src = "http://localhost:8001/tone.wav"; }, 400);
+		} else {
+			document.getElementById("state").textContent = "swapped-playing";
+		}
+	});
+	m.addEventListener("error", () => {
+		if (m.error && m.error.code === 1) return; // MEDIA_ERR_ABORTED on src swap
+		document.getElementById("state").textContent = "error";
+	});
+</script>
+</body>
+</html>

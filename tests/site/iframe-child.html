@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>iframe child</title></head>
+<body>
+<audio id="m" src="http://127.0.0.1:8001/tone.wav" autoplay muted></audio>
+<script>
+	const m = document.getElementById("m");
+	m.addEventListener("play", () => parent.postMessage("played", "*"));
+	m.addEventListener("error", () => parent.postMessage("error", "*"));
+</script>
+</body>
+</html>
